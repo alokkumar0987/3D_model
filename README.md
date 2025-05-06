@@ -49,6 +49,12 @@ To run this application locally, you need to have Python installed on your syste
 
 ![Screenshot 2025-05-03 233722](https://github.com/user-attachments/assets/988af971-69e0-41c6-b7be-d6ada4b2c51d)
 
+![Screenshot 2025-05-06 185751](https://github.com/user-attachments/assets/732e409d-c829-487a-b987-4b7d0f5d465e)
+
+
+![Screenshot 2025-05-06 184317](https://github.com/user-attachments/assets/1682480e-2412-4e02-8470-4dc2c629d705)
+
+
 
 ## Dependencies
 
