@@ -63,9 +63,9 @@ def image_to_3d(edges):
 # Enhanced text-to-3D with primitive shapes
 def text_to_3d(prompt):
     prompt = prompt.lower()
+
     try:
-        if "car" in prompt:
-            # Create a simple car shape
+        if any(word in prompt for word in ["car", "vehicle", "automobile"]):
             body = trimesh.creation.box(extents=[2, 1, 0.5])
             roof = trimesh.creation.box(extents=[1.5, 0.8, 0.5])
             roof.apply_translation([0, 0, 0.5])
@@ -73,9 +73,8 @@ def text_to_3d(prompt):
             for i, wheel in enumerate(wheels):
                 wheel.apply_translation([-0.8 if i < 2 else 0.8, -0.6 if i % 2 == 0 else 0.6, -0.2])
             return trimesh.util.concatenate([body, roof] + wheels)
-        
-        elif "chair" in prompt:
-            # Create a simple chair
+
+        elif any(word in prompt for word in ["chair", "seat"]):
             seat = trimesh.creation.box(extents=[1, 1, 0.1])
             legs = [trimesh.creation.cylinder(radius=0.05, height=0.8) for _ in range(4)]
             for i, leg in enumerate(legs):
@@ -85,16 +84,22 @@ def text_to_3d(prompt):
             back = trimesh.creation.box(extents=[0.1, 1, 1])
             back.apply_translation([0.5, 0, 0])
             return trimesh.util.concatenate([seat] + legs + [back])
-        
+
+        elif any(word in prompt for word in ["ball", "sphere", "round"]):
+            return trimesh.creation.icosphere(radius=1)
+
+        elif any(word in prompt for word in ["box", "cube", "block"]):
+            return trimesh.creation.box(extents=[1, 1, 1])
+
+        elif "cylinder" in prompt:
+            return trimesh.creation.cylinder(radius=0.5, height=1)
+
         else:
-            # Default to sphere with some variation
-            if "round" in prompt or "ball" in prompt:
-                return trimesh.creation.icosphere(radius=1)
-            elif "box" in prompt or "cube" in prompt:
-                return trimesh.creation.box(extents=[1, 1, 1])
-            else:
-                return trimesh.creation.cylinder(radius=0.5, height=1)
-    except:
+            st.warning("Unknown object in prompt. Defaulting to cube.")
+            return trimesh.creation.box(extents=[1, 1, 1])
+
+    except Exception as e:
+        st.error(f"Error generating 3D from text: {str(e)}")
         return trimesh.creation.box(extents=[1, 1, 1])
 
 # Visualize with matplotlib (more reliable than pyrender)
