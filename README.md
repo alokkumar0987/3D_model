@@ -42,8 +42,13 @@ To run this application locally, you need to have Python installed on your syste
 5.  The application will open automatically in your web browser (usually at http://localhost:8501).
 
 
-![Screenshot of 3D Model Generator](![Screenshot 2025-05-03 233819](https://github.com/user-attachments/assets/55456ee0-395a-449d-964f-22c576b38ed2)
-)
+(![Screenshot 2025-05-03 233819](https://github.com/user-attachments/assets/55456ee0-395a-449d-964f-22c576b38ed2))
+
+![Screenshot 2025-05-03 233655](https://github.com/user-attachments/assets/d2f9b776-f292-45ff-97bf-6d2d3dc9a563)
+
+
+![Screenshot 2025-05-03 233722](https://github.com/user-attachments/assets/988af971-69e0-41c6-b7be-d6ada4b2c51d)
+
 
 ## Dependencies
 
